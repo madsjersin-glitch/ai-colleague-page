@@ -57,8 +57,9 @@ a{color:inherit}
 .small{font-size:14px;color:var(--muted)}
 
 /* Phone demo */
-.demo{position:relative;justify-self:center;width:100%;max-width:400px}
+.demo{position:relative;justify-self:center;width:100%;max-width:380px}
 .sticker{position:absolute;top:-26px;right:-14px;z-index:2;background:var(--sun);color:var(--ink);font-family:var(--display);font-weight:800;font-size:15px;line-height:1.1;text-align:center;width:96px;height:96px;border-radius:50%;display:grid;place-items:center;transform:rotate(12deg);box-shadow:0 8px 20px rgba(22,19,58,.15)}
+.hero-phone{display:block;width:100%;height:auto;filter:drop-shadow(0 40px 50px rgba(52,66,214,.35))}
 .phone{background:var(--ink);border-radius:44px;padding:12px;box-shadow:0 40px 80px -30px rgba(52,66,214,.55)}
 .screen{background:var(--white);border-radius:34px;overflow:hidden;display:flex;flex-direction:column;height:560px}
 .chat-head{display:flex;align-items:center;gap:12px;padding:22px 18px 14px;border-bottom:1px solid var(--line)}
@@ -175,23 +176,8 @@ footer{padding-block:40px;display:flex;flex-wrap:wrap;justify-content:space-betw
       </div>
 
       <div class="demo">
-        <!-- FIGMA ASSET: optionally replace this live mockup with a phone render -->
         <div class="sticker">Up to 80% less time on questions</div>
-        <div class="phone">
-          <div class="screen">
-            <div class="chat-head">
-              <div class="avatar">G</div>
-              <div><b>Gravy, your AI Colleague</b><small>● Online on every shift</small></div>
-            </div>
-            <div class="msgs" id="msgs" aria-live="polite"></div>
-            <div class="chips" role="group" aria-label="Try a question">
-              <button class="chip" id="q-allergen" data-q="0" aria-pressed="true">Allergens</button>
-              <button class="chip" id="q-swap" data-q="1" aria-pressed="false">Shift swap</button>
-              <button class="chip" id="q-leave" data-q="2" aria-pressed="false">Time off</button>
-              <button class="chip" id="q-unknown" data-q="3" aria-pressed="false">Unknown</button>
-            </div>
-          </div>
-        </div>
+        <img class="hero-phone" src="hero-phone.png" width="617" height="1243" alt="All Gravy app on a phone: Jen Cee, the AI Colleague, answers an allergen question with a source and escalates an unknown question to a manager.">
       </div>
     </div>
 
@@ -293,29 +279,5 @@ footer{padding-block:40px;display:flex;flex-wrap:wrap;justify-content:space-betw
   </footer>
 </div>
 
-<script>
-const convos=[
-  {q:"Does the halloumi wrap have nuts in it? Table 6 is asking.",a:"No nuts in the halloumi wrap. The pesto is nut-free, but it contains milk.",ref:"Allergen guide · Wraps"},
-  {q:"Can I swap my Saturday close with Jonas?",a:"Yes. Ask Jonas to accept the swap in Schedule, and your manager approves it. Swaps need 48 hours' notice.",ref:"Staff handbook · Shift swaps"},
-  {q:"How many holiday days do I have left?",a:"You have 9 days left this year. Book them under Time off in your profile.",ref:"Your profile · Time off"},
-  {q:"Is the terrace open for the private party on the 14th?",a:"I don't have that information yet, so I've sent your question to your manager, Sara.",esc:"Escalated to a human · You'll get a reply here"}
-];
-const msgs=document.getElementById("msgs");
-const chips=[...document.querySelectorAll(".chip")];
-let timer;
-function bubble(cls,html){const d=document.createElement("div");d.className="bubble "+cls;d.innerHTML=html;msgs.appendChild(d);return d}
-function play(i){
-  clearTimeout(timer);msgs.innerHTML="";
-  chips.forEach(c=>c.setAttribute("aria-pressed",c.dataset.q==i));
-  const c=convos[i];
-  bubble("me",c.q);
-  const t=document.createElement("div");t.className="typing";t.innerHTML="<i></i><i></i><i></i>";msgs.appendChild(t);
-  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
-  timer=setTimeout(()=>{t.remove();bubble("ai",c.a+(c.ref?`<span class="ref">Source: ${c.ref}</span>`:"")+(c.esc?`<span class="esc">↗ ${c.esc}</span>`:""))},reduce?0:900);
-}
-chips.forEach(c=>c.addEventListener("click",()=>play(+c.dataset.q)));
-/* show the first exchange immediately so the page is complete at rest */
-(function(){const c=convos[0];bubble("me",c.q);bubble("ai",c.a+`<span class="ref">Source: ${c.ref}</span>`)})();
-</script>
 </body>
 </html>
