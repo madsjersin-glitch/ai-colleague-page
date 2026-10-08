@@ -118,20 +118,18 @@ section{padding-block:88px}
 .outcome p{color:var(--muted);font-size:16px}
 
 /* Time-saving band */
-.band{background:var(--brand);color:var(--white);border-radius:32px;padding:clamp(32px,5vw,64px);display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
-.band h2{font-size:clamp(36px,4.6vw,58px);font-weight:800}
+.band{background:var(--brand);color:var(--white);border-radius:32px;padding:clamp(32px,5vw,64px);display:grid;gap:40px}
+.band-head{max-width:720px}
+.band h2{font-size:clamp(36px,4.6vw,58px);font-weight:800;margin-top:14px}
 .band h2 span{color:var(--sun)}
-.band p{opacity:.9;margin-top:16px;font-size:18px}
-.checks{list-style:none;margin:0;padding:0;display:grid;gap:14px}
-.checks li{display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,.1);border-radius:16px;padding:16px 18px;font-size:17px}
-.checks li::before{content:"";flex:none;width:24px;height:24px;border-radius:50%;background:var(--sun) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2316133a' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/16px no-repeat;margin-top:1px}
+.band-head p{opacity:.9;margin-top:16px;font-size:19px;max-width:34em}
+.eyebrow-on-brand{background:rgba(255,255,255,.14);color:var(--white)}
+.flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.flow li{background:rgba(255,255,255,.1);border-radius:20px;padding:24px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.flow .num{width:36px;height:36px;border-radius:50%;background:var(--sun);color:var(--ink);display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:17px;font-variant-numeric:tabular-nums}
+.flow h3{font-size:22px;font-weight:700;margin-top:6px}
+.flow p{opacity:.9;font-size:16px}
 
-/* How it answers: 3 steps */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;counter-reset:s}
-.step{border-top:3px solid var(--ink);padding-top:20px}
-.step .n{font-family:var(--display);font-weight:800;font-size:15px;color:var(--brand);letter-spacing:.06em;text-transform:uppercase}
-.step h3{font-size:24px;margin-top:8px}
-.step p{color:var(--muted);margin-top:10px}
 
 /* Proof */
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
@@ -162,7 +160,7 @@ footer{padding-block:40px;display:flex;flex-wrap:wrap;justify-content:space-betw
   .hero,.band{grid-template-columns:1fr}
   .hero{gap:64px;padding-block:24px 56px}
   .outcomes{grid-template-columns:1fr 1fr}
-  .steps,.stats{grid-template-columns:1fr}
+  .flow,.stats{grid-template-columns:1fr}
   section{padding-block:64px}
 }
 @media (max-width:560px){
@@ -221,53 +219,40 @@ footer{padding-block:40px;display:flex;flex-wrap:wrap;justify-content:space-betw
         <article class="outcome">
           <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></div>
           <h3>Empower your team</h3>
-          <p>Staff find answers on their own, the moment a question comes up, without waiting for a manager.</p>
+          <p>New starters feel confident from their first shift, and nobody has to find a manager to know what to do.</p>
         </article>
         <article class="outcome">
           <div class="ic"><svg viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg></div>
           <h3>Remove friction</h3>
-          <p>No more digging through PDFs or chasing someone on WhatsApp. Basic questions get answered in seconds, so managers can focus on the conversations that matter.</p>
+          <p>Managers stop answering the same questions on repeat and get hours back every week for the work that matters.</p>
         </article>
         <article class="outcome">
           <div class="ic"><svg viewBox="0 0 24 24"><path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"/></svg></div>
           <h3>Always up to date</h3>
-          <p>Update a menu, policy or allergen guide once, and every answer reflects it straight away. No outdated printouts, no mixed messages between locations.</p>
+          <p>Every location gives guests the same correct answer, even the day after a menu or policy change.</p>
         </article>
         <article class="outcome">
           <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg></div>
           <h3>Spot training needs</h3>
-          <p>See what people ask most, then build the training your teams actually need.</p>
+          <p>See where your team is unsure, and fix it before it reaches a guest.</p>
         </article>
       </div>
     </section>
 
     <div class="band">
-      <div>
-        <h2>Save <span>80%</span> of the time spent answering questions.</h2>
+      <div class="band-head">
+        <span class="eyebrow eyebrow-on-brand">How it works</span>
+        <h2>One question away. <span>No dead ends.</span></h2>
         <p>The same allergen question, the same holiday policy, the same Wi-Fi password, fifty times a week. Hand it over.</p>
       </div>
-      <ul class="checks">
-        <li><span><b>Chat-like interface.</b> Intuitive from the first shift.</span></li>
-        <li><span><b>Knows all your content.</b> Handbooks, menus and policies, looked up instantly.</span></li>
-        <li><span><b>Short answers, with a source.</b> Every reply points back to where it came from.</span></li>
-        <li><span><b>Your brand voice.</b> Pick its name and avatar, and train it to sound like you.</span></li>
-      </ul>
+      <ol class="flow">
+        <li><span class="num">1</span><h3>Ask in plain words</h3><p>Staff ask in a chat, just like messaging a colleague. You choose its name, avatar and tone.</p></li>
+        <li><span class="num">2</span><h3>Get the answer, with a source</h3><p>It searches your handbooks, menus and policies, and replies in a sentence that links to where the answer came from.</p></li>
+        <li><span class="num">3</span><h3>Unknowns go to a human</h3><p>If the answer isn't in your content, it passes the question to a manager and flags what's missing. Add it once, and next time it can answer.</p></li>
+      </ol>
     </div>
 
     <section>
-      <div class="sec-head">
-        <span class="eyebrow">How it works</span>
-        <h2>No dead ends. Ever.</h2>
-        <p>When the answer isn't in your content, your AI Colleague says so and passes it to a human.</p>
-      </div>
-      <div class="steps">
-        <div class="step"><div class="n">Step 1</div><h3>Someone asks</h3><p>A team member types a question in the app, in their own words, at any hour.</p></div>
-        <div class="step"><div class="n">Step 2</div><h3>AI answers, or escalates</h3><p>It replies in a sentence with a reference. If the information isn't there, it routes the question to you.</p></div>
-        <div class="step"><div class="n">Step 3</div><h3>The gap gets filled</h3><p>You're notified about the missing content. Add it once, and next time the AI can answer.</p></div>
-      </div>
-    </section>
-
-    <section style="padding-top:0">
       <div class="sec-head">
         <span class="eyebrow">Proven impact</span>
         <h2>Trusted by 350+ hospitality brands.</h2>
