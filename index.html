@@ -49,7 +49,7 @@ a{color:inherit}
 /* HERO */
 .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding-block:40px 80px}
 .eyebrow{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);background:var(--panel);padding:6px 12px;border-radius:999px}
-.hero h1{font-size:clamp(44px,6.4vw,80px);font-weight:800;margin-top:20px}
+.hero h1{font-size:clamp(40px,5.2vw,66px);font-weight:800;margin-top:20px}
 .hero h1 em{font-style:normal;color:var(--brand);position:relative;white-space:nowrap}
 .hero h1 em::after{content:"";position:absolute;left:-2%;right:-2%;bottom:.04em;height:.22em;background:var(--sun);z-index:-1;border-radius:4px}
 .hero .lede{font-size:20px;color:var(--muted);margin-top:22px;max-width:30em}
@@ -57,6 +57,29 @@ a{color:inherit}
 .small{font-size:14px;color:var(--muted)}
 
 /* Phone demo */
+/* Animated hero phone: frame + message layers */
+.chat-anim{position:relative;width:100%}
+.chat-anim .frame{display:block;width:100%;height:auto;filter:drop-shadow(0 40px 50px rgba(52,66,214,.35))}
+.chat-anim .layer{position:absolute;height:auto;opacity:0;transform:translateY(14px) scale(.97);transition:opacity .35s ease,transform .45s cubic-bezier(.2,.8,.2,1)}
+.chat-anim .layer.r{transform-origin:100% 100%}
+.chat-anim .layer.l{transform-origin:0 100%}
+.chat-anim .layer.on{opacity:1;transform:none}
+.chat-anim.fade .layer{opacity:0;transform:none;transition:opacity .5s ease}
+.chat-anim .typing{width:15.559%}
+.chat-anim .typing svg{display:block;width:100%;height:auto}
+.chat-anim .typing circle{fill:#9a97b8;animation:dot 1s infinite}
+.chat-anim .typing circle:nth-child(3){animation-delay:.15s}
+.chat-anim .typing circle:nth-child(4){animation-delay:.3s}
+@keyframes dot{0%,100%{opacity:.35;transform:translateY(0)}40%{opacity:1;transform:translateY(-3px)}}
+.chat-anim .typing circle{transform-box:fill-box}
+.chat-anim .m1{left:18.152%;top:19.067%;width:74.716%}
+.chat-anim .m2{left:7.942%;top:30.813%;width:68.395%}
+.chat-anim .m3{left:21.556%;top:48.190%;width:71.313%}
+.chat-anim .m4{left:7.942%;top:59.775%;width:72.123%}
+.chat-anim .t2{left:7.942%;top:30.813%}
+.chat-anim .t4{left:7.942%;top:59.775%}
+@media (prefers-reduced-motion:reduce){.chat-anim .layer.msg{opacity:1;transform:none}.chat-anim .typing{display:none}}
+
 .demo{position:relative;justify-self:center;width:100%;max-width:320px}
 .sticker{position:absolute;top:-26px;right:-14px;z-index:2;background:var(--sun);color:var(--ink);font-family:var(--display);font-weight:800;font-size:15px;line-height:1.1;text-align:center;width:96px;height:96px;border-radius:50%;display:grid;place-items:center;transform:rotate(12deg);box-shadow:0 8px 20px rgba(22,19,58,.15)}
 .hero-phone{display:block;width:100%;height:auto;filter:drop-shadow(0 40px 50px rgba(52,66,214,.35))}
@@ -167,8 +190,8 @@ footer{padding-block:40px;display:flex;flex-wrap:wrap;justify-content:space-betw
     <div class="hero">
       <div>
         <span class="eyebrow">AI Colleague</span>
-        <h1>The colleague who <em>always</em> knows.</h1>
-        <p class="lede">Your team asks. Your AI Colleague answers in seconds, straight from your own handbooks, menus and policies. Managers get their time back, and guests get staff who know the answer on the spot.</p>
+        <h1>Never keep a guest <em>waiting</em> on “let me check.”</h1>
+        <p class="lede">With All Gravy’s AI Colleague, your team gets the right answer in seconds, on every shift, straight from your own handbooks, menus and policies.</p>
         <div class="cta-row">
           <a class="btn btn-primary" href="https://www.allgravy.com/book-meeting">Get a free demo →</a>
           <span class="small">Takes 20 seconds to book</span>
@@ -177,7 +200,15 @@ footer{padding-block:40px;display:flex;flex-wrap:wrap;justify-content:space-betw
 
       <div class="demo">
         <div class="sticker">Up to 80% less time on questions</div>
-        <img class="hero-phone" src="hero-phone.png" width="617" height="1243" alt="All Gravy app on a phone: Jen Cee, the AI Colleague, answers an allergen question with a source and escalates an unknown question to a manager.">
+        <div class="chat-anim" id="chatAnim" role="img" aria-label="All Gravy app on a phone: Jen Cee, the AI Colleague, answers an allergen question with a source and escalates an unknown question to a manager.">
+          <img class="frame" src="phone-frame.png" width="617" height="1243" alt="">
+          <img class="layer msg r m1" src="msg-1.png" alt="">
+          <img class="layer msg l m2" src="msg-2.png" alt="">
+          <img class="layer msg r m3" src="msg-3.png" alt="">
+          <img class="layer msg l m4" src="msg-4.png" alt="">
+          <div class="layer typing l t2"><svg viewBox="0 0 96 56" aria-hidden="true"><rect x="1" y="1" width="94" height="54" rx="27" fill="#fff" stroke="#e2dff5" stroke-width="2"/><circle cx="32" cy="28" r="6"/><circle cx="48" cy="28" r="6"/><circle cx="64" cy="28" r="6"/></svg></div>
+          <div class="layer typing l t4"><svg viewBox="0 0 96 56" aria-hidden="true"><rect x="1" y="1" width="94" height="54" rx="27" fill="#fff" stroke="#e2dff5" stroke-width="2"/><circle cx="32" cy="28" r="6"/><circle cx="48" cy="28" r="6"/><circle cx="64" cy="28" r="6"/></svg></div>
+        </div>
       </div>
     </div>
 
@@ -279,5 +310,22 @@ footer{padding-block:40px;display:flex;flex-wrap:wrap;justify-content:space-betw
   </footer>
 </div>
 
+<script>
+(function(){
+  var root=document.getElementById("chatAnim"); if(!root) return;
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var q=function(s){return root.querySelector(s)};
+  var steps=[[400,".m1",1],[1300,".t2",1],[2700,".t2",0],[2700,".m2",1],[4600,".m3",1],[5500,".t4",1],[6900,".t4",0],[6900,".m4",1]];
+  var timers=[];
+  function run(){
+    root.classList.remove("fade");
+    root.querySelectorAll(".layer").forEach(function(el){el.classList.remove("on")});
+    steps.forEach(function(s){timers.push(setTimeout(function(){q(s[1]).classList.toggle("on",!!s[2])},s[0]))});
+    timers.push(setTimeout(function(){root.classList.add("fade");root.querySelectorAll(".layer").forEach(function(el){el.classList.remove("on")})},11500));
+    timers.push(setTimeout(run,12400));
+  }
+  run();
+})();
+</script>
 </body>
 </html>
