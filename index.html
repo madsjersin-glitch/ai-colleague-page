@@ -135,16 +135,18 @@ section{padding-block:88px}
 .carousel{position:relative}
 .c-track{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding-bottom:8px;scrollbar-width:none}
 .c-track::-webkit-scrollbar{display:none}
-.slide{flex:0 0 min(680px,100%);scroll-snap-align:start;container-type:inline-size}
+.slide{flex:0 0 100%;scroll-snap-align:center;margin:0}
+.slide .art-wrap{max-width:720px;margin:0 auto;container-type:inline-size}
 .slide .art{position:relative;width:100%;aspect-ratio:821/711}
 .slide .photo{position:absolute;z-index:0;left:0;top:0;width:86.602%;height:100%;border-radius:4cqw;background:linear-gradient(135deg,var(--brand),#8f7bff 60%,var(--sun)) center/cover;overflow:hidden}
 .slide .photo img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;display:block}
 .slide .photo .ph{position:absolute;inset:0;display:grid;place-items:center;color:rgba(255,255,255,.85);font-family:var(--display);font-weight:800;font-size:7cqw;letter-spacing:-.02em}
 .slide .card{position:absolute;z-index:2;left:37.759%;top:53.868%;width:59.683%;height:39.381%;background:#f0eeff;border-radius:3cqw;box-shadow:0 2cqw 5cqw rgba(22,19,58,.22);padding:4.6cqw 5cqw;display:flex;flex-direction:column;justify-content:space-between}
-.slide .card .who{font-weight:700;font-size:2.4cqw;color:var(--ink)}
+.slide .card .logo{height:8.4cqw;display:flex;align-items:center}
+.slide .card .logo img{display:block;width:auto;max-width:100%}
 .slide .card b{font-family:var(--display);font-weight:800;font-size:11cqw;line-height:1;color:var(--brand);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
 .slide .card p{color:var(--muted);font-size:3cqw;line-height:1.3}
-.c-nav{display:flex;align-items:center;gap:12px;margin-top:20px}
+.c-nav{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:24px}
 .c-btn{width:46px;height:46px;border-radius:50%;border:2px solid var(--line);background:var(--white);color:var(--ink);font:700 20px var(--body);cursor:pointer;display:grid;place-items:center}
 .c-btn:hover{border-color:var(--brand);color:var(--brand)}
 .c-btn:disabled{opacity:.35;cursor:default;border-color:var(--line);color:var(--ink)}
@@ -274,22 +276,22 @@ footer{padding-block:40px;display:flex;flex-wrap:wrap;justify-content:space-betw
       <div class="carousel" aria-roledescription="carousel" aria-label="Customer results">
         <div class="c-track" id="cTrack">
           <figure class="slide" aria-roledescription="slide" aria-label="1 of 3">
-            <div class="art">
+            <div class="art-wrap"><div class="art">
               <div class="photo"><span class="ph" aria-hidden="true">Q8</span><img src="customer-q8.jpg" alt="Q8 employees smiling outside a Q8 station" loading="lazy" onerror="this.remove()"></div>
-              <figcaption class="card"><span class="who">Q8</span><b>33%</b><p>Increase in employee retention.</p></figcaption>
-            </div>
+              <figcaption class="card"><span class="logo"><img src="logo-q8.png" alt="Q8" style="height:6cqw"></span><b>33%</b><p>Increase in employee retention.</p></figcaption>
+            </div></div>
           </figure>
           <figure class="slide" aria-roledescription="slide" aria-label="2 of 3">
-            <div class="art">
+            <div class="art-wrap"><div class="art">
               <div class="photo"><span class="ph" aria-hidden="true">Tusenfryd</span><img src="customer-tusenfryd.jpg" alt="Tusenfryd team" loading="lazy" onerror="this.remove()"></div>
-              <figcaption class="card"><span class="who">Tusenfryd</span><b>20%</b><p>Less time spent answering emails.</p></figcaption>
-            </div>
+              <figcaption class="card"><span class="logo"><img src="logo-tusenfryd.png" alt="Tusenfryd" style="height:8.4cqw"></span><b>20%</b><p>Less time spent answering emails.</p></figcaption>
+            </div></div>
           </figure>
           <figure class="slide" aria-roledescription="slide" aria-label="3 of 3">
-            <div class="art">
+            <div class="art-wrap"><div class="art">
               <div class="photo"><span class="ph" aria-hidden="true">Pizza Pilgrims</span><img src="customer-pizza-pilgrims.jpg" alt="Pizza Pilgrims team" loading="lazy" onerror="this.remove()"></div>
-              <figcaption class="card"><span class="who">Pizza Pilgrims</span><b>96%</b><p>Adoption rate on launch day.</p></figcaption>
-            </div>
+              <figcaption class="card"><span class="logo"><img src="logo-pizza-pilgrims.png" alt="Pizza Pilgrims" style="height:3.7cqw"></span><b>96%</b><p>Adoption rate on launch day.</p></figcaption>
+            </div></div>
           </figure>
         </div>
         <div class="c-nav">
